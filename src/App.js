@@ -11,14 +11,18 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setStatus("loading");
         const request = await fetch("https://randomuser.me/api/");
         // const response = await request.json();
         // const results = response.results;    // Assigns response to the results object property
         const {results} = await request.json(); // This line does the same thing as the above two lines together by destructuring the results immediately from the response
-        setData(results[0]);
-        console.log(data);
+        if (request.status === 200) {
+          setData(results[0]);
+          setStatus("success");
+        }
       } catch (e) {
         console.log(e);
+        setStatus("error");
       }
     }
     fetchData();
