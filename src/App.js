@@ -30,7 +30,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <UserDetails />
+      {status === "loading" && <Loader />}
+      {status === "success" && <UserDetails />}
+      {status === "error" && "Something went wrong."}
     </div>
   );
 };
