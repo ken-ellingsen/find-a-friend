@@ -28,10 +28,12 @@ const App = () => {
     fetchData();
   }, []);
 
+  console.log(data);
+
   return (
     <div className="App">
       {status === "loading" && <Loader />}
-      {status === "success" && <UserDetails />}
+      {status === "success" && <UserDetails data={data} />}
       {status === "error" && "Something went wrong."}
     </div>
   );
